@@ -1,0 +1,9 @@
+imutils
+matplotlib
+opencv-python
+pandas
+scipy
+sklearn
+tensorflow==2.10.0
+tqdm
+wandb

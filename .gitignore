@@ -1,0 +1,5 @@
+venv/
+*.pyc
+wandb/
+saved_weights/
+__pycache__/
