@@ -1,4 +1,5 @@
 imutils
+ipykernel
 matplotlib
 opencv-python
 pandas
