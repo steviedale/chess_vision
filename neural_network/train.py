@@ -2,10 +2,11 @@ import tensorflow as tf
 import datetime
 import pandas as pd
 import time
-import wandb
-from wandb.keras import WandbCallback
+# import wandb
+# from wandb.keras import WandbCallback
 from collections import Counter
 from tqdm import tqdm
+import os
 
 from model import Model
 
@@ -22,15 +23,15 @@ STRIDE = 96
 LR = 1e-6
 
 
-wandb.config = {
-    'batch_size': BATCH_SIZE,
-    'patch_size': PATCH_SIZE,
-    'stride': STRIDE,
-    'learning_rate': LR,
-    'description': "running training on phase 2 dataset + GBG + macbook_2021"
-}
+# wandb.config = {
+#     'batch_size': BATCH_SIZE,
+#     'patch_size': PATCH_SIZE,
+#     'stride': STRIDE,
+#     'learning_rate': LR,
+#     'description': "running training on phase 2 dataset + GBG + macbook_2021"
+# }
 
-wandb.init(project="chess_vision", entity="steviedale")
+# wandb.init(project="chess_vision", entity="steviedale")
 
 CLASSES = [
     'a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1',
@@ -39,8 +40,8 @@ CLASSES = [
     'a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'h4',
 ]
 
-train_df = pd.read_csv('../chess_vision/256x256/dataframes/train.csv')
-valid_df = pd.read_csv('../chess_vision/256x256/dataframes/test.csv')
+train_df = pd.read_csv('../dataset/dataframes/train.csv')
+valid_df = pd.read_csv('../dataset/dataframes/test.csv')
 
 print(f"train: {len(train_df)}")
 print(f"valid: {len(valid_df)}")
@@ -91,7 +92,7 @@ model.compile(loss="categorical_crossentropy", optimizer=tf.keras.optimizers.Ada
 model.summary()
 
 ### Define Callbacks
-saved_weights_dir = f'saved_weights/{wandb.run}'
+saved_weights_dir = f'saved_weights/{time.time()}'
 if not os.path.exists(saved_weights_dir):
 	os.mkdir(saved_weights_dir)
 
@@ -103,7 +104,8 @@ tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram
 
 earlystopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0, patience=MAX_PATIENCE, verbose=1)
 
-callbacks_list = [checkpoint, tensorboard_callback, earlystopping, WandbCallback()]
+# callbacks_list = [checkpoint, tensorboard_callback, earlystopping, WandbCallback()]
+callbacks_list = [checkpoint, tensorboard_callback, earlystopping]
 
 ### Train Model
 start_time = time.time()
