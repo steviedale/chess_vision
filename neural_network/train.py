@@ -1,7 +1,3 @@
-import os
-os.environ['CUDA_DEVICE_ORDER']='PCI_BUS_ID'
-os.environ['CUDA_VISIBLE_DEVICES']='1'
-
 import tensorflow as tf
 import datetime
 import pandas as pd
@@ -43,8 +39,8 @@ CLASSES = [
     'a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'h4',
 ]
 
-train_df = pd.read_csv('/home/stevie/datasets/chess_vision/256x256/dataframes/train.csv')
-valid_df = pd.read_csv('/home/stevie/datasets/chess_vision/256x256/dataframes/test.csv')
+train_df = pd.read_csv('../chess_vision/256x256/dataframes/train.csv')
+valid_df = pd.read_csv('../chess_vision/256x256/dataframes/test.csv')
 
 print(f"train: {len(train_df)}")
 print(f"valid: {len(valid_df)}")
