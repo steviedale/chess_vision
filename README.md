@@ -28,19 +28,19 @@ pip install -r requirements.txt
 
 ## KNN
 1. run the jupyter notebook at knn/knn.ipynb 
-2. create and view the plots by running the notebook at plotting/plot_knn.ipynb
+2. view results in the knn/results folder (there should be four graphs: training time, eval time, train accuracy, and test accuracy)
 
 ## Decision Tree
 1. run the jupyter notebook at decision_tree/decision_tree.ipynb 
-2. create and view the plots by running the notebook at plotting/plot_decision_tree.ipynb
+2. view results in the decision_tree/results folder (there should be four graphs: training time, eval time, train accuracy, and test accuracy)
 
 ## Boosting
 1. run the jupyter notebook at boosting/boosting.ipynb 
-2. create and view the plots by running the notebook at plotting/plot_boosting.ipynb
+2. view results in the boosting/results folder (there should be four graphs: training time, eval time, train accuracy, and test accuracy)
 
 ## SVM
 1. run the jupyter notebook at svm/svm.ipynb 
-2. create and view the plots by running the notebook at plotting/plot_svm.ipynb
+2. view results in the svm/results folder (there should be four graphs: training time, eval time, train accuracy, and test accuracy)
 
 ## Neural Networks
 1. source the virtual environment
