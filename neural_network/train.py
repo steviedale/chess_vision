@@ -8,7 +8,8 @@ from collections import Counter
 from tqdm import tqdm
 import os
 
-from model import Model
+from chess_vision.neural_network.model_large import ModelLarge
+from chess_vision.neural_network.model_small import ModelSmall
 
 
 def color_conversion(x):
@@ -21,6 +22,7 @@ BATCH_SIZE = 32
 PATCH_SIZE = 256
 STRIDE = 96
 LR = 1e-6
+MODEL = ModelLarge
 
 
 # wandb.config = {
@@ -87,7 +89,7 @@ class_weights_valid = {class_id : max_val/num_images for class_id, num_images in
 print(class_weights_valid)
 
 ### Load Model
-model = Model.create_model(input_shape=(256, 256, 3), num_classes=32, activation="relu")
+model = MODEL.create_model(input_shape=(256, 256, 3), num_classes=32, activation="relu")
 model.compile(loss="categorical_crossentropy", optimizer=tf.keras.optimizers.Adam(learning_rate=LR), metrics=["accuracy", "AUC"])
 model.summary()
 

@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 
-class Model:
+class ModelLarge:
     @staticmethod
     def create_model(input_shape, num_classes, activation="relu", weightsPath=None):
         # initialize the model
